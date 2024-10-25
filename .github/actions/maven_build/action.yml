@@ -4,12 +4,11 @@ inputs:
   dockerfile_path:
     description: "Path to the Dockerfile"
     required: false
-    default: "Dockerfile"
+    default: "src/main/docker/Dockerfile.jvm"
 runs:
   using: composite
   steps:
     - name: Set up JDK 21
-      shell: bash
       uses: actions/setup-java@v4
       with:
         java-version: '21'
