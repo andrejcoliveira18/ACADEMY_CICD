@@ -23,4 +23,8 @@ jobs:
  
     - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/maven_build@main
     - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/docker_build@main
+      with:
+        path_dockerfile: src/main/docker/Dockerfile.jvm
+        image_name: Academy
+        tag_name: aca
     
