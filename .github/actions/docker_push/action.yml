@@ -1,0 +1,23 @@
+name: "Docker Push"
+description: "Pushes a Docker image to Docker Hub"
+
+inputs:
+  docker_username:
+    description: "Docker Hub username"
+    required: true
+  image_name:
+    description: "Full name of the Docker image to push"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Tag Docker image for Docker Hub
+      shell: bash
+      run: |
+        docker tag "${{ inputs.image_name }}" "${{ inputs.docker_username }}/${{ inputs.image_name }}"
+
+    - name: Push Docker image to Docker Hub
+      shell: bash
+      run: |
+        docker push "${{ inputs.docker_username }}/${{ inputs.image_name }}"
