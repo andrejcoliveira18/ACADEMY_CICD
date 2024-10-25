@@ -43,7 +43,7 @@ jobs:
     - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/docker_push@main
       with:
         docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
-        image_name: "academy"
+        image_name: "academy:v1.0"
 
-        
+
     

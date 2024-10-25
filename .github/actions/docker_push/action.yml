@@ -6,7 +6,7 @@ inputs:
     description: "Docker Hub username"
     required: true
   image_name:
-    description: "Full name of the Docker image to push"
+    description: "Full name of the Docker image to push (including the tag)"
     required: true
 
 runs:
