@@ -35,4 +35,3 @@ jobs:
       
     - name: List Docker images
       run: docker images
-has context menu
