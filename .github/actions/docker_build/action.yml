@@ -8,17 +8,35 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-        cache: maven
+  - name: Set default tag if not provided
+    shell: bash
+    run: |
+      if [ -z "${{ inputs.tag_name }}" ]; then
+          TAG=$(date +%s)
+        else
+          TAG="${{ inputs.tag_name }}"
+        fi
+          echo "TAG=$TAG" >> $GITHUB_ENV
+
+  - name: Build Docker image
+    shell: bash
+    run: |
+        DOCKERFILE_PATH=${{ inputs.path_dockerfile }}
+        IMAGE_NAME="${{ inputs.image_name }}:$TAG"
+
+  - name: Set up JDK 21
+    uses: actions/setup-java@v4
+    with:
+      java-version: '21'
+      distribution: 'temurin'
+      cache: maven
    
-    - name: Create new Docker image
-      shell: bash  
-      run: docker build . --file ${{ inputs.dockerfile_path }} --tag academy:$(date +%s)
+  - name: Create new Docker image
+    shell: bash  
+    run: docker build . --file ${{ inputs.dockerfile_path }} --tag academy:$(date +%s)
    
-    - name: List Docker images
-      shell: bash
-      run: docker images
+  - name: List Docker images
+    shell: bash
+    run: docker images
+
+    
