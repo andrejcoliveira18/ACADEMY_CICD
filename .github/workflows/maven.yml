@@ -30,7 +30,9 @@ jobs:
 
     - name: Check Secret Value Partially
       run: |
-        echo "Username starts with: ${secrets.DOCKERHUB_USERNAME:0:2}****"
+        echo "Username starts with: ${DOCKERHUB_USERNAME:0:2}****"
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
