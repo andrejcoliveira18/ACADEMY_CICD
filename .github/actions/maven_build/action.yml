@@ -14,7 +14,7 @@ runs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-  
+   
     - name: Build with Maven
-      shell: bash
+      shell: bash  
       run: mvn -B package -DskipTests --file pom.xml
