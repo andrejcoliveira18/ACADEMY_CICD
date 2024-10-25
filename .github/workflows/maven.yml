@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
+    - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/maven_build@main
+    
     - uses: actions/checkout@v4
     
     - name: Create new Docker image
@@ -29,4 +31,4 @@ jobs:
     - name: List Docker images
       run: docker images
 
-    - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/maven_build@main
+    
