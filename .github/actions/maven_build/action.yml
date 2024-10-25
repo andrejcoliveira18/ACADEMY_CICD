@@ -8,10 +8,14 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Build with Maven
-      run: mvn -B package -DskipTests --file pom.xml
-      
-    - run: |
-        echo "Update me with the necessary steps to build the application"
+    - name: Set up JDK 21
       shell: bash
-    
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+  
+    - name: Build with Maven
+      shell: bash
+      run: mvn -B package -DskipTests --file pom.xml
