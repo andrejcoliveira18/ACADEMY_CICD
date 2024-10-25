@@ -35,7 +35,7 @@ jobs:
         password: $${{ secrets.DOCKERHUB_TOKEN }}
     
     - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/docker_push@main
-      width:
+      with:
         docker_username: $${{  secrets.DOCKERHUB_USERNAME }}
         image_name: "academy_cicd_push"
     
