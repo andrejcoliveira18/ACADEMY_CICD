@@ -5,7 +5,7 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-
+ 
 name: Java CI with Maven
  
 on:
@@ -20,15 +20,12 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: andrejcoliveira18/ACADEMY_CICD/.github/actions/maven_build@main
-    
     - uses: actions/checkout@v4
-    
-    - name: Create new Docker image
-      run: docker build . --file ./src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
-
-      
-    - name: List Docker images
-      run: docker images
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
 
     
